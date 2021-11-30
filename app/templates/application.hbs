@@ -38,6 +38,8 @@ variables
     ```
     <button type="button" {{on 'click' this.showPerson}}>{{person}}</button>
     ```
+    // this is like the () => onClick(person) in react
     ```
-    <button type="button" {{on 'click' this.showPerson}}>{{person}}</button>
+    <button type="button" {{on 'click' (fn this.showPerson
+        person)}}>{{person}}</button>
     ```

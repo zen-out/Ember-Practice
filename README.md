@@ -1,56 +1,49 @@
-# ember-quickstart
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 
-## Prerequisites
+<!-- code_chunk_output -->
 
-You will need the following things properly installed on your computer.
 
-* [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with npm)
-* [Ember CLI](https://ember-cli.com/)
-* [Google Chrome](https://google.com/chrome/)
 
-## Installation
+<!-- /code_chunk_output -->
 
-* `git clone <repository-url>` this repository
-* `cd ember-quickstart`
-* `npm install`
+This is like main.handlebars
 
-## Running / Development
+1. ember generate route [route]
+2. class as model() {} - which returns routes (this could be
+the data that you pass into the page)
+3. ember generate component people-list
+4. In the component, identify props
+```
+<h2>{{@title}}</h2>
+{{#each @people as |person|}}
+<li>{{person}}</li>
+{{/each}}
+```
+5. In the page, just call the component by passing in the
+variables
+```
+<PeopleList @title="List of Scientists"
+    @people={{model}}/>
+    ```
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-* Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
+    6. Create user interactions by
 
-### Code Generators
+    A. Embedding the logic (this is like logic.js)
+    ```
+    @import {action} from '@ember/object'
 
-Make use of the many generators for code, try `ember help generate` for more details
-
-### Running Tests
-
-* `ember test`
-* `ember test --server`
-
-### Linting
-
-* `npm run lint`
-* `npm run lint:fix`
-
-### Building
-
-* `ember build` (development)
-* `ember build --environment production` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* [ember.js](https://emberjs.com/)
-* [ember-cli](https://ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+    @action
+    showPerson(person) {
+    alert(the person's name is ${person})
+    }
+    ```
+    B. Utilizing the onclick function in handlebars (if no
+    parameter)
+    ```
+    <button type="button" {{on 'click' this.showPerson}}>{{person}}</button>
+    ```
+    ```
+    <button type="button" {{on 'click' this.showPerson}}>{{person}}</button>
+    ```
+6. 
